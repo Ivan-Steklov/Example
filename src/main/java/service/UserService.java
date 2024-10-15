@@ -1,5 +1,5 @@
 package service;
-
+// сервисный уровень инкапсулирует бизнес-логику приложения
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

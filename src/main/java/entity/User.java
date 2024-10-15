@@ -1,4 +1,5 @@
 package entity;
+// используется для хранения классов, представляющих сущности базы данных.
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;

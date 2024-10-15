@@ -1,5 +1,8 @@
 package controller;
+
+// Контроллер отвечает за обработку входящих HTTP-запросов от клиента.
 import entity.User;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +21,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
-    }
+//    @GetMapping
+//    @Operation(operationId = "Создание партии ваучеров", description = "Метод создания новой партии ваучеров")
+//    public List<User> getAllUsers() {
+//        return userService.getAllUsers();
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
@@ -30,10 +34,10 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
+//    @PostMapping
+//    public User createUser(@RequestBody User user) {
+//        return userService.createUser(user);
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -21,32 +22,45 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping
-//    @Operation(operationId = "Создание партии ваучеров", description = "Метод создания новой партии ваучеров")
-//    public List<User> getAllUsers() {
-//        return userService.getAllUsers();
-//    }
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.findAll();
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<User> user = userService.findById(id);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-//    @PostMapping
-//    public User createUser(@RequestBody User user) {
-//        return userService.createUser(user);
-//    }
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return userService.save(user);
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUser(id, user));
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        return userService.findById(id)
+                .map(user -> {
+                    user.setFirstName(userDetails.getFirstName());
+                    user.setLastName(userDetails.getLastName());
+                    user.setMiddleName(userDetails.getMiddleName());
+                    user.setBirthDate(userDetails.getBirthDate());
+                    user.setBalance(userDetails.getBalance());
+                    return ResponseEntity.ok(userService.save(user));
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+        Optional<User> userOptional = userService.findById(id);
+
+        if (userOptional.isPresent()) {
+            userService.deleteById(id); // Удаление пользователя
+            return ResponseEntity.ok().build(); // Возвращаем статус 200 OK
+        } else {
+            return ResponseEntity.notFound().build(); // Возвращаем статус 404 NOT FOUND
+        }
     }
 }

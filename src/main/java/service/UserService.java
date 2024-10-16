@@ -1,9 +1,9 @@
 package service;
 // сервисный уровень инкапсулирует бизнес-логику приложения
 import entity.User;
+import repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,24 +18,19 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(Long id) {
+    public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
 
-    public User createUser(User user) {
+    public User save(User user) {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User user) {
-        user.setId(id);
-        return userRepository.save(user);
-    }
-
-    public void deleteUser(Long id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
 }

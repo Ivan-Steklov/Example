@@ -1,11 +1,9 @@
-package controller;
+package ivanproject.controller;
 
-// Контроллер отвечает за обработку входящих HTTP-запросов от клиента.
-//import entity.User;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import ivanproject.service.impl.UserServiceImpl;
 
 import java.util.List;
 
@@ -14,21 +12,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
+
 
     @GetMapping
-    @Operation(operationId = "Расчет хода игрока11")
+    @Operation(operationId = "Получение списка всех юзеров")
     public List<String> getAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping(value ="/{id}")
-    @Operation(operationId = "Расчет хода игрока")
+    @Operation(operationId = "Получение юзера")
     public String getUserById(@PathVariable Long id) {
         return userService.findById(id);
     }
-}
-//    @GetMapping("/{id}")
+
+
+    //    @GetMapping("/{id}")
 //    public ResponseEntity<User> getUserById(@PathVariable Long id) {
 //        Optional<User> user = userService.findById(id);
 //        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -65,3 +65,4 @@ public class UserController {
 //        }
 //    }
 
+}

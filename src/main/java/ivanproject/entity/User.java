@@ -1,4 +1,4 @@
-//package entity;
+package ivanproject.entity;
 //// используется для хранения классов, представляющих сущности базы данных.
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.GeneratedValue;

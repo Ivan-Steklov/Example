@@ -1,4 +1,4 @@
-//package repository;
+package ivanproject.repository;//package repository;
 ////Репозиторий отвечает за доступ к данным, взаимодействуя с базой данных.
 //import entity.User;
 //import org.springframework.data.jpa.repository.JpaRepository;

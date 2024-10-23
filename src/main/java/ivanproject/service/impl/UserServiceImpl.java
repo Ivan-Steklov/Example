@@ -22,6 +22,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public String findById(Long id) {
         // Пример данных
-        return "User" + id;
+        return "User - " + id;
     }
 }

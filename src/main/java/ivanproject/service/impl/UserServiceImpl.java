@@ -1,27 +1,41 @@
 package ivanproject.service.impl;
 
+import ivanproject.entity.User;
+import ivanproject.repository.UserRepository;
 import ivanproject.service.UserService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-@Data
 @Service
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+
+    // Конструктор для инициализации переменной
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository; // Инициализация переменной
+    }
 
     @Override
     public List<String> findAll() {
-        // Пример данных
         return Arrays.asList("User1", "User2", "User3", "User4");
     }
 
     @Override
-    public String findById(Long id) {
-        // Пример данных
-        return "User - " + id;
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 }

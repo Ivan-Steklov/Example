@@ -5,6 +5,7 @@ import ivanproject.repository.UserRepository;
 import ivanproject.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +17,12 @@ public class UserServiceImpl implements UserService {
 
     // Конструктор для инициализации переменной
     public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository; // Инициализация переменной
+        this.userRepository = userRepository;
     }
 
     @Override
-    public List<String> findAll() {
-        return Arrays.asList("User1", "User2", "User3", "User4");
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

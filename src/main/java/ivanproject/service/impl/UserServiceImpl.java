@@ -3,22 +3,22 @@ package ivanproject.service.impl;
 import ivanproject.entity.User;
 import ivanproject.repository.UserRepository;
 import ivanproject.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    // Конструктор для инициализации переменной
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    // Конструктор для инициализации переменной
+//    public UserServiceImpl(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     @Override
     public List<User> findAll() {

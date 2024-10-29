@@ -3,6 +3,9 @@ package ivanproject.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import ivanproject.entity.User;
 import ivanproject.service.UserService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,13 +14,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor // Генерирует конструктор для всех финальных полей
 public class UserController {
 
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping
     @Operation(operationId = "Получение списка всех юзеров")
@@ -27,13 +27,9 @@ public class UserController {
 
     @GetMapping(value = "/{id}")
     @Operation(operationId = "Получение юзера по ID")
-    public ResponseEntity<Optional<User>> getUserById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long id) {
         Optional<User> user = userService.findById(id);
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -58,7 +54,3 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 }
-
-
-
-

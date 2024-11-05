@@ -14,8 +14,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor // Генерирует конструктор для всех финальных полей
+//@RequiredArgsConstructor // Генерирует конструктор для всех финальных полей
 public class UserController {
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     private final UserService userService;
 

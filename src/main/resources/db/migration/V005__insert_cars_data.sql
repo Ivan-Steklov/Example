@@ -1,0 +1,9 @@
+INSERT INTO Cars (brand, model, year) VALUES ('Toyota', 'Camry', 2023);
+INSERT INTO Cars (brand, model, year) VALUES ('Honda', 'CRV', 2022);
+INSERT INTO Cars (brand, model, year) VALUES ('Lada', 'Granta', 2023);
+INSERT INTO Cars (brand, model, year) VALUES ('Lada', 'Priora', 2022);
+INSERT INTO Cars (brand, model, year) VALUES ('Ford', 'Mustang', 2023);
+INSERT INTO Cars (brand, model, year) VALUES ('Hyundai', 'Solaris', 2022);
+INSERT INTO Cars (brand, model, year) VALUES ('Daewoo', 'Matiz', 2023);
+INSERT INTO Cars (brand, model, year) VALUES ('Lada', 'Largus', 2022);
+INSERT INTO Cars (brand, model, year) VALUES ('BMW', 'X5', 2022);

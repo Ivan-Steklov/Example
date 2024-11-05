@@ -15,10 +15,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-//    // Конструктор для инициализации переменной
-//    public UserServiceImpl(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
+    // Конструктор для инициализации переменной
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<User> findAll() {

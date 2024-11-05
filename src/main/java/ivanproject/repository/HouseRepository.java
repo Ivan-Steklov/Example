@@ -1,10 +1,9 @@
 package ivanproject.repository;
-
-import ivanproject.entity.User;
+import ivanproject.entity.House;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface HouseRepository extends JpaRepository<House, Long> {
 
 }

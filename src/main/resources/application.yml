@@ -6,17 +6,20 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres  # Используйте правильное имя вашей базы данных
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 123456
-    testWhileIdle: true  # Пробелы были исправлены
+    testWhileIdle: true
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    baseline-on-migrate: true
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect  # Правильное расположение
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   h2:
     console:

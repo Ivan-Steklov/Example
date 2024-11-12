@@ -29,8 +29,8 @@ public class User {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cars> cars = new ArrayList<>();
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<House> houses = new ArrayList<>();
+    @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private House houses = new House();
 
     public String getLastName() {
         return lastName;
@@ -88,11 +88,11 @@ public class User {
         this.cars = cars;
     }
 
-    public List<House> getHouses() {
+    public House getHouses() {
         return houses;
     }
 
-    public void setHouses(List<House> houses) {
+    public void setHouses(House houses) {
         this.houses = houses;
     }
 

@@ -17,7 +17,7 @@ public class House {
     private String houseNumber;
     private String apartmentNumber;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "owner_id") // Связь с пользователем
     private User owner;
 

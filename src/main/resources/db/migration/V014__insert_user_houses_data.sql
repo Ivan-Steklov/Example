@@ -1,0 +1,1 @@
+INSERT INTO user_houses (user_id, house_id) VALUES (1,1), (2,2), (3,3);

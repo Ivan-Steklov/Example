@@ -1,6 +1,6 @@
 package ivanproject.service;
 
-import ivanproject.entity.Car;
+import ivanproject.entity.Cars;
 import ivanproject.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,15 +18,15 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<Car> findAll() {
+    public List<Cars> findAll() {
         return carRepository.findAll();
     }
 
-    public Optional<Car> findById(Long id) {
+    public Optional<Cars> findById(Long id) {
         return carRepository.findById(id);
     }
 
-    public Car save(Car car) {
+    public Cars save(Cars car) {
         return carRepository.save(car);
     }
 

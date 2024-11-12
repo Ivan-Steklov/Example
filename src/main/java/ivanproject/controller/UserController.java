@@ -6,8 +6,10 @@ import ivanproject.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,11 +31,16 @@ public class UserController {
         return userService.findAll();
     }
 
+    //    @GetMapping(value = "/{id}")
+//    @Operation(operationId = "Получение юзера по ID")
+//    public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long id) {
+//        Optional<User> user = userService.findById(id);
+//        return user.map(ResponseEntity::ok).get().getBody();
+//    }
     @GetMapping(value = "/{id}")
     @Operation(operationId = "Получение юзера по ID")
-    public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long id) {
-        Optional<User> user = userService.findById(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public User getUserById(@PathVariable(value = "id") Long id) {
+        return userService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
     @PostMapping

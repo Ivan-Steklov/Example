@@ -12,7 +12,7 @@ spring:
     testWhileIdle: true
     driver-class-name: org.postgresql.Driver
   flyway:
-    baseline-on-migrate: true
+    baseline-on-migrate: false
   jpa:
     hibernate:
       ddl-auto: update

@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 public class VeterinaryClinicController {
 
+
     private final RestTemplate restTemplate;
     private final VeterinaryClinicService veterinaryClinicService;
 

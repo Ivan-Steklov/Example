@@ -2,6 +2,7 @@ package ivanproject.model;
 
 public class ClinicResponse {
 
+
     private Long id;
     private String name;
     private String address;
